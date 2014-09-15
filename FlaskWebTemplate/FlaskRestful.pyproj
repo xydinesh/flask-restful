@@ -18,7 +18,7 @@
     <PythonWsgiHandler>{StartupModule}.wsgi_app</PythonWsgiHandler>
     <Name>FlaskRestful</Name>
     <RootNamespace>FlaskWebTemplate</RootNamespace>
-    <InterpreterId>{d8ab447b-925c-43cb-b705-c3d81882f027}</InterpreterId>
+    <InterpreterId>{c3ec45fb-ed72-4370-a136-6a5154698d17}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -30,6 +30,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="models.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="__init__.py" />
     <Compile Include="routes.py" />
   </ItemGroup>
@@ -64,14 +67,12 @@
     <Content Include="static\scripts\respond.js" />
     <Content Include="static\scripts\respond.min.js" />
     <Content Include="static\scripts\_references.js" />
-    <Content Include="templates\about.html" />
-    <Content Include="templates\contact.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
-      <Id>{d8ab447b-925c-43cb-b705-c3d81882f027}</Id>
+      <Id>{c3ec45fb-ed72-4370-a136-6a5154698d17}</Id>
       <BaseInterpreter>{823478df-2bc6-3149-90e0-6f3e0282dc82}</BaseInterpreter>
       <Version>2.7</Version>
       <Description>env (Enthought Canopy (2.7 64-bit))</Description>
