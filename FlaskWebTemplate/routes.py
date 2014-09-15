@@ -8,10 +8,13 @@ from flask.ext.httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
 
 @auth.verify_password
-def verify_password(username, password):
-    user = User.query.filter_by(username = username).first()
-    if not user or not user.verify_password(password):
-        return False
+def verify_password(username_or_token, password):
+    user = User.verify_auth_token(username_or_token)
+    if not user:
+        user = User.query.filter_by(username = username_or_token).first()
+        if not user or not user.verify_password(password):
+            return False
+    g.user = user
     return True
 
 @app.route('/')
@@ -32,7 +35,7 @@ def get_auth_token():
 @app.route('/api/greeting', methods=['POST'])
 @auth.login_required
 def greeting():
-    return jsonify({'greenting': 'Hello User'}), 201
+    return jsonify({'greenting': 'Hello {0}'.format(g.user.username)}), 201
 
 
 @app.route('/api/users', methods=['POST'])

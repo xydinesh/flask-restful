@@ -1,6 +1,6 @@
-from FlaskWebTemplate import db
+from FlaskWebTemplate import db, app
 from passlib.apps import custom_app_context as pwd_context
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, SignatureExpired, BadSignature
 
 class User(db.Model):
     __tablename__ = 'restful_users'
